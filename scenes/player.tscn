@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfprnt2iwbs8k"]
+
+[ext_resource type="Script" path="res://scenes/CharacterBody2D.gd" id="1_r2yhi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_sex7o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ry0cs"]
+radius = 3.0
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_r2yhi")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(0, 2.98023e-07)
+scale = Vector2(6.0068, 6)
+mesh = SubResource("SphereMesh_sex7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ry0cs")
