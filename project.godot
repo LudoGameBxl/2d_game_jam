@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="2d Game Jam"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneManager="*res://scripts/SceneManager.gd"
+InputEventController="*res://scripts/InputEventController.gd"
 
 [layer_names]
 

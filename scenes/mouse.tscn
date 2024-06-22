@@ -15,7 +15,9 @@ physics_material_override = SubResource("PhysicsMaterial_o506b")
 gravity_scale = 0.0
 
 [node name="Mouse" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_tyd6r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_nyd3h")
