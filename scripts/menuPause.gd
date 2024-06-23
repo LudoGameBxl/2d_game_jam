@@ -10,7 +10,6 @@ func _ready():
 	exit_to_main_menu.connect("button_down", mainmenu_button_down)
 	
 func restart_button_down():
-	print('restart')
 	SceneManager.removeScene("MenuPause")
 	SceneManager.reloadSpecificScene("LevelContainer")
 	

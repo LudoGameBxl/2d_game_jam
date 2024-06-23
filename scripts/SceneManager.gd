@@ -6,7 +6,8 @@ class_name NSceneManager
 	"Menu" : "res://scenes/menu.tscn",
 	"MenuPause" : "res://scenes/menuPause.tscn",
 	"LevelContainer" : "res://scenes/level_container.tscn",
-	"Mouse":"res://scenes/mouse.tscn"
+	"Mouse":"res://scenes/mouse.tscn",
+	"MenuGameFinished": "res://scenes/menu_game_finished.tscn"
 }
 
 var currentSceneAlias = ""
@@ -14,8 +15,8 @@ var currentSceneAlias = ""
 
 func _ready() -> void:
 	currentSceneAlias = scenes.find_key(mainScene)
-	#addScene("Menu")
-
+	EventManager.GAME_finished.connect(game_finish)
+	
 func hasScene(sceneAlias: String)-> bool:
 	return get_parent().has_node(sceneAlias)
 	
@@ -40,3 +41,7 @@ func restartScene() -> void:
 
 func quitGame() -> void:
 	get_tree().quit()
+	
+func game_finish(scoreRed : String, scoreBlue : String) -> void:
+	addScene("MenuGameFinished")
+	print(scoreRed, scoreBlue) 

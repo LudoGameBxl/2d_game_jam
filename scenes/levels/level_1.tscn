@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dg0gc737bs4m0"]
+[gd_scene load_steps=17 format=3 uid="uid://dg0gc737bs4m0"]
 
 [ext_resource type="PackedScene" uid="uid://cfprnt2iwbs8k" path="res://scenes/player.tscn" id="1_gc16u"]
 [ext_resource type="PackedScene" uid="uid://kvtpjkau7eu5" path="res://scenes/mouse.tscn" id="1_pnjd4"]
 [ext_resource type="Texture2D" uid="uid://br7asvfnwf6xm" path="res://assets/img/terrain.png" id="3_0kc58"]
 [ext_resource type="Script" path="res://scripts/Score.gd" id="4_oamc3"]
+[ext_resource type="Texture2D" uid="uid://cg1wnl02hm888" path="res://assets/img/player.png" id="5_av8og"]
+[ext_resource type="Script" path="res://scenes/levels/Adversaire.gd" id="5_hrwv7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tc7a5"]
 size = Vector2(59, 242)
@@ -27,6 +29,20 @@ font_size = 23
 [sub_resource type="LabelSettings" id="LabelSettings_ruu52"]
 font_size = 23
 font_color = Color(0, 0.431373, 0.733333, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_03bvx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 45.3333, -5.33333, 0, 0, 0, 0, -49.6667, -5.33334, 0, 0, 0, 0, 45.3333, -5.33333)
+}
+point_count = 3
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17324"]
+radius = 8.2
+height = 28.4
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7vvc"]
+radius = 2.4
+height = 13.6
 
 [node name="Level_1" type="Node"]
 
@@ -109,6 +125,23 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("4_oamc3")
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Score"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Score/HBoxContainer2"]
+layout_mode = 2
+text = "Time:"
+
+[node name="TimerText" type="Label" parent="CanvasLayer/Score/HBoxContainer2"]
+layout_mode = 2
+text = "90"
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Score/HBoxContainer2"]
+wait_time = 3.0
+one_shot = true
+
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Score"]
 layout_mode = 1
 anchors_preset = 5
@@ -137,5 +170,45 @@ text = "0
 "
 label_settings = SubResource("LabelSettings_ruu52")
 
+[node name="Adversaire" type="Node2D" parent="."]
+position = Vector2(99, 305)
+rotation = -1.5708
+scale = Vector2(3, 3)
+script = ExtResource("5_hrwv7")
+
+[node name="Path2D" type="Path2D" parent="Adversaire"]
+curve = SubResource("Curve2D_03bvx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Adversaire/Path2D"]
+position = Vector2(45.3333, -5.33333)
+rotation = -3.1304
+rotates = false
+cubic_interp = false
+
+[node name="Player2" type="CharacterBody2D" parent="Adversaire/Path2D/PathFollow2D"]
+position = Vector2(4.62534, -3.71867)
+rotation = 3.1304
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+
+[node name="Player" type="Sprite2D" parent="Adversaire/Path2D/PathFollow2D/Player2"]
+position = Vector2(7.62939e-06, 0)
+texture = ExtResource("5_av8og")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Adversaire/Path2D/PathFollow2D/Player2"]
+position = Vector2(2.34479e-14, -5.6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_17324")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Adversaire/Path2D/PathFollow2D/Player2"]
+position = Vector2(10.6, 6.4)
+shape = SubResource("CapsuleShape2D_t7vvc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Adversaire/Path2D/PathFollow2D/Player2"]
+position = Vector2(-10.4, 6.4)
+shape = SubResource("CapsuleShape2D_t7vvc")
+
 [connection signal="body_entered" from="GoalLeftArea2D2" to="Mouse" method="_on_goal_left_area_2d_2_body_entered"]
 [connection signal="body_entered" from="GoalRightArea2D2" to="Mouse" method="_on_goal_right_area_2d_2_body_entered"]
+[connection signal="timeout" from="CanvasLayer/Score/HBoxContainer2/Timer" to="CanvasLayer/Score" method="_on_timer_timeout"]
