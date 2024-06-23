@@ -3,4 +3,4 @@ TODO:
 	1. Pause quand le menu pause est ouvert et quand le jeu est fini
 	2. Mettre le score sur le menu finish game
 	3. Ajouter les sons
-	4. Ajouter IA adversaire (Personnage face au but et bloque les balle)
+	4. Améliorer IA adversaire (attaque, sort de sa cage follow la balle)
