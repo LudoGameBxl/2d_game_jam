@@ -5,6 +5,8 @@ extends Control
 @onready var credit = $MarginContainer/VBoxContainer/Credit
 @onready var quit = $MarginContainer/VBoxContainer/Quit
 
+func _enter_tree():
+	SceneManager.removeScene("LevelContainer")
 
 func _ready():
 	play.connect("button_down", play_button_down)
@@ -19,5 +21,5 @@ func credit_button_down():
 	pass
 	
 func quit_button_down():
-	SceneManager.QuitGame()
+	SceneManager.quitGame()
 	pass

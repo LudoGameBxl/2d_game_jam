@@ -1,22 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfprnt2iwbs8k"]
+[gd_scene load_steps=5 format=3 uid="uid://cfprnt2iwbs8k"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_r2yhi"]
+[ext_resource type="Texture2D" uid="uid://cg1wnl02hm888" path="res://assets/img/player.png" id="2_2qan6"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_sex7o"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17324"]
+radius = 8.2
+height = 28.4
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ry0cs"]
-radius = 3.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7vvc"]
+radius = 2.4
+height = 13.6
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(5, 5)
+rotation = 1.5708
+scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_r2yhi")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(0, 2.98023e-07)
-scale = Vector2(6.0068, 6)
-mesh = SubResource("SphereMesh_sex7o")
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("2_2qan6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ry0cs")
+position = Vector2(2.34479e-14, -5.6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_17324")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(10.6, 6.4)
+shape = SubResource("CapsuleShape2D_t7vvc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-10.4, 6.4)
+shape = SubResource("CapsuleShape2D_t7vvc")
