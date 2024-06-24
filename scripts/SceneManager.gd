@@ -30,7 +30,7 @@ func reloadSpecificScene(sceneAlias: String) -> void:
 	addScene(sceneAlias)
 	
 func removeScene(sceneAlias : String) -> void:
-	if get_parent().get_node(sceneAlias) != null:
+	if get_parent().has_node(sceneAlias):
 		get_parent().get_node(sceneAlias).queue_free()
 	
 func switchScene(sceneAlias : String) -> void:

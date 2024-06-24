@@ -4,6 +4,12 @@ extends Control
 @onready var exit_to_main_menu = $MarginContainer/VBoxContainer/ExitToMainMenu
 @onready var restart = $MarginContainer/VBoxContainer/Restart
 
+func _enter_tree() -> void:
+	EventManager.GAME_pause.emit(true)
+
+func _exit_tree() -> void:
+	EventManager.GAME_pause.emit(false)
+
 func _ready():
 	resume.connect("button_down", resume_button_down)
 	restart.connect("button_down", restart_button_down)
@@ -19,4 +25,3 @@ func resume_button_down():
 func mainmenu_button_down():
 	SceneManager.removeScene("MenuPause")
 	SceneManager.switchScene("Menu")
-	pass

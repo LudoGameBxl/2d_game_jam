@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scenes/levels/Adversaire.gd" id="5_hrwv7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tc7a5"]
-size = Vector2(59, 242)
+size = Vector2(59, 175)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cb7j"]
 size = Vector2(25, 643.5)
@@ -57,6 +57,7 @@ position = Vector2(39, 304)
 collision_mask = 7
 
 [node name="Goal" type="CollisionShape2D" parent="GoalLeftArea2D2"]
+position = Vector2(-6, -0.5)
 shape = SubResource("RectangleShape2D_tc7a5")
 debug_color = Color(0.941176, 0, 0.607843, 0.419608)
 
@@ -66,6 +67,7 @@ rotation = -3.14159
 collision_mask = 7
 
 [node name="Goal" type="CollisionShape2D" parent="GoalRightArea2D2"]
+position = Vector2(-15.0005, -10.5)
 shape = SubResource("RectangleShape2D_tc7a5")
 
 [node name="Player" parent="." instance=ExtResource("1_gc16u")]
@@ -139,7 +141,7 @@ layout_mode = 2
 text = "90"
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Score/HBoxContainer2"]
-wait_time = 3.0
+wait_time = 30.0
 one_shot = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Score"]

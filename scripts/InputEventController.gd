@@ -5,4 +5,5 @@ func _input(event):
 		if SceneManager.hasScene("MenuPause"):
 			SceneManager.removeScene("MenuPause")
 		else:
-			SceneManager.addScene("MenuPause")
+			if !SceneManager.hasScene("MenuGameFinished"):
+				SceneManager.addScene("MenuPause")
