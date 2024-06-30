@@ -25,7 +25,6 @@ func _process(delta):
 	timer_text.text = "%02d:%02d" % [minute, second]
 	
 func goal_team(team)-> void:
-	print('test')
 	if team == "red":
 		score_red += 1
 		team_score_red.text = str(score_red)

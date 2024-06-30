@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://er25gohjp4bn"]
+[gd_scene load_steps=5 format=3 uid="uid://er25gohjp4bn"]
 
 [ext_resource type="Texture2D" uid="uid://bf7u487xqfvsx" path="res://assets/img/mouse.png" id="1_w8sji"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_yn5m6"]
+[ext_resource type="AudioStream" uid="uid://drr1hxqmkjxse" path="res://sounds/Confirm.ogg" id="2_h7e23"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g1qo4"]
 font_size = 80
@@ -15,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yn5m6")
+hoverSound = ExtResource("2_h7e23")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -62,6 +64,7 @@ layout_mode = 2
 text = "Play"
 
 [node name="Credit" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Credit
 "

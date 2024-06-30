@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventManager="*res://scripts/EventManager.gd"
+AudioManager="*res://scripts/AudioManager.gd"
 SceneManager="*res://scripts/SceneManager.gd"
 InputEventController="*res://scripts/InputEventController.gd"
 

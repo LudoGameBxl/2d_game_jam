@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dg0gc737bs4m0"]
+[gd_scene load_steps=20 format=3 uid="uid://dg0gc737bs4m0"]
 
 [ext_resource type="PackedScene" uid="uid://cfprnt2iwbs8k" path="res://scenes/player.tscn" id="1_gc16u"]
 [ext_resource type="PackedScene" uid="uid://kvtpjkau7eu5" path="res://scenes/mouse.tscn" id="1_pnjd4"]
 [ext_resource type="Texture2D" uid="uid://br7asvfnwf6xm" path="res://assets/img/terrain.png" id="3_0kc58"]
 [ext_resource type="Script" path="res://scripts/Score.gd" id="4_oamc3"]
+[ext_resource type="Script" path="res://scripts/Countdown.gd" id="5_2yo6b"]
 [ext_resource type="Texture2D" uid="uid://cg1wnl02hm888" path="res://assets/img/player.png" id="5_av8og"]
 [ext_resource type="Script" path="res://scenes/levels/Adversaire.gd" id="5_hrwv7"]
+[ext_resource type="AudioStream" uid="uid://c672r6y2jbyxg" path="res://sounds/Fart.ogg" id="6_g02qq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tc7a5"]
 size = Vector2(59, 175)
@@ -29,6 +31,10 @@ font_size = 23
 [sub_resource type="LabelSettings" id="LabelSettings_ruu52"]
 font_size = 23
 font_color = Color(0, 0.431373, 0.733333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_em0t1"]
+font_size = 100
+font_color = Color(1, 0, 0.152941, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_03bvx"]
 _data = {
@@ -172,6 +178,36 @@ text = "0
 "
 label_settings = SubResource("LabelSettings_ruu52")
 
+[node name="Countdown" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("5_2yo6b")
+countdownSound = ExtResource("6_g02qq")
+
+[node name="Label" type="Label" parent="CanvasLayer/Countdown"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 105.0
+offset_right = 20.0
+offset_bottom = 128.0
+grow_horizontal = 2
+text = "3"
+label_settings = SubResource("LabelSettings_em0t1")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Countdown"]
+wait_time = 6.0
+one_shot = true
+
 [node name="Adversaire" type="Node2D" parent="."]
 position = Vector2(99, 305)
 rotation = -1.5708
@@ -214,3 +250,4 @@ shape = SubResource("CapsuleShape2D_t7vvc")
 [connection signal="body_entered" from="GoalLeftArea2D2" to="Mouse" method="_on_goal_left_area_2d_2_body_entered"]
 [connection signal="body_entered" from="GoalRightArea2D2" to="Mouse" method="_on_goal_right_area_2d_2_body_entered"]
 [connection signal="timeout" from="CanvasLayer/Score/HBoxContainer2/Timer" to="CanvasLayer/Score" method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Countdown/Timer" to="CanvasLayer/Countdown" method="_on_timer_timeout"]

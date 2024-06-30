@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcxcsivjw0wrr"]
 
-[ext_resource type="Script" path="res://MenuGameFinished.gd" id="1_am57j"]
+[ext_resource type="Script" path="res://scripts/MenuGameFinished.gd" id="1_am57j"]
 [ext_resource type="Texture2D" uid="uid://bf7u487xqfvsx" path="res://assets/img/mouse.png" id="2_a1i8m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g1qo4"]

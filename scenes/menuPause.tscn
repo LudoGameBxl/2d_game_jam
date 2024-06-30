@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dar36wdig5rpk"]
+[gd_scene load_steps=6 format=3 uid="uid://dar36wdig5rpk"]
 
 [ext_resource type="Script" path="res://scripts/menuPause.gd" id="1_wbgha"]
+[ext_resource type="AudioStream" uid="uid://drr1hxqmkjxse" path="res://sounds/Confirm.ogg" id="2_df12j"]
 [ext_resource type="Texture2D" uid="uid://bf7u487xqfvsx" path="res://assets/img/mouse.png" id="2_wm8pi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g1qo4"]
@@ -18,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wbgha")
+hoverSound = ExtResource("2_df12j")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

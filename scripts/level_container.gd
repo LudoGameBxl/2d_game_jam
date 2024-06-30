@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 
 
 func pauseMenu(p) -> void:
-	print(p)
 	if p:
 		Engine.time_scale = 0
 	else:

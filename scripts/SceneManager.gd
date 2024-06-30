@@ -44,4 +44,3 @@ func quitGame() -> void:
 	
 func game_finish(scoreRed : String, scoreBlue : String) -> void:
 	addScene("MenuGameFinished")
-	print(scoreRed, scoreBlue) 

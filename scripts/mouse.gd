@@ -3,6 +3,7 @@ extends RigidBody2D
 var currentRotation := 0.0
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $AnimatedSprite2D/VisibleOnScreenNotifier2D
+@export var ballKickSound : AudioStream
 
 var windowSize = DisplayServer.window_get_size()
 
@@ -24,6 +25,8 @@ func screen_exited() -> void:
 
 		
 func _on_body_entered(body):
+	if body.is_in_group("player"):
+		AudioManager.play_sound(ballKickSound)
 	animated_sprite_2d.play("default")
 	await get_tree().create_timer(3.0).timeout
 	animated_sprite_2d.stop()

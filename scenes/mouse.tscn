@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://kvtpjkau7eu5"]
+[gd_scene load_steps=12 format=3 uid="uid://kvtpjkau7eu5"]
 
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="1_lc0ti"]
 [ext_resource type="Texture2D" uid="uid://di4nw5g83au6t" path="res://assets/img/Mouse_anim.png" id="2_8e3ia"]
+[ext_resource type="AudioStream" uid="uid://bsb7wfighdi81" path="res://sounds/kick.ogg" id="2_towm3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o506b"]
 bounce = 0.5
@@ -61,6 +62,7 @@ inertia = 0.8
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_lc0ti")
+ballKickSound = ExtResource("2_towm3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

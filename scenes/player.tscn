@@ -11,7 +11,7 @@ height = 28.4
 radius = 2.4
 height = 13.6
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 rotation = 1.5708
 scale = Vector2(3, 3)
 collision_layer = 2
